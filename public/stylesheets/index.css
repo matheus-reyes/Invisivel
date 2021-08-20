@@ -1,9 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Open+Sans&display=swap');
+
+
 body{
-  background: linear-gradient(20deg, rgba(18,13,30,1) 0%, rgba(18,13,30,0.5) 35%, rgba(54,46,78,1) 100%);
+background: linear-gradient(20deg, rgba(18,13,30,1) 0%, rgb(16, 24, 32) 50%);
+}
+.conteudo{
+  margin-top: 18vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.logo{
+  font-family: 'Montserrat', sans-serif;
+  color:white;
+  font-size: 8vw;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+.botoes-itens{
+  margin-right: 5%;
+  margin-left: 5%;
 }
 
+.botao input{
+  font-size:1.7vw;
+  font-family: Arial , sans-serif;
+  width:25vw;
+  height:7vh;
+  border-width:1px;
+  color:#fff;
+  border-color:#18ab29;
+  border-radius: 30px;
+  text-shadow: 1px 1px 0px #2f6627;
+  background:#44c767;
+  margin: 5% 0px 5% 0px;
+  transition: border-color 0.5s;
+}
+
+
+.botao input:hover{
+  border-color:#ffffff;
+  border-width:2px;
+  transition: border-color 0.5s;
+}
+
+#logo-botoes{
+  display: inline-block;
+  
+}
 .fonte-principal{
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.5rem;
 }
 
@@ -14,7 +60,8 @@ body{
 }
 
 .nav-link:hover{
-  color:grey;
+  color: #44c767;
+  transition: color 0.5s;
 }
 
 .barra-lateral{
@@ -26,6 +73,8 @@ body{
   margin-left: 50px;
 }
 
+
+
 /* Media Querys Para Responsividade */
 
 @media(max-width: 1680px) {
@@ -34,18 +83,39 @@ body{
   }
 }
 
-
-
-
 @media(max-width: 1024px) {
   html{
       font-size: 13px;
   }
+  
 }
 
 @media(max-width: 768px) {
   html{
       font-size: 13px;
+  }
+  .logo{
+    font-size: 12vw;   
+    left: 43%;
+    position: absolute;
+    transform: translateX(-50%);   
+  }
+  .conteudo{
+    display: inline-block;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+  .botoes-itens{
+    top: 20%;
+    left: 43%;
+    position: absolute;
+    transform: translateX(-50%);  
+  }
+  .botao input{
+    font-size: 3vw;
+    width: 50vw;
+
   }
 }
 

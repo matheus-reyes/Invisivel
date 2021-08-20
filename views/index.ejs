@@ -10,7 +10,7 @@
   <link rel='stylesheet' type='text/css' media='screen' href='stylesheets/index.css'>
 </head>
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid" id='teste'>
     <div class="row">
       <!-- Barra de Navegação -->
       <nav class="navbar navbar-expand-sm py-5">
@@ -31,6 +31,19 @@
     </div>
   </div>
 
+  <!-- Teste do backgroud -->
+  <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br> AAAAAAAAAAAAAA -->
+
+  <script>
+    var alturaDiv = document.getElementById('teste').offsetHeight;
+    var alturaPagina = window.screen.height;
+
+    if(alturaDiv > alturaPagina){
+      document.getElementById('teste').style.height = "100%";
+    }else{
+      document.getElementById('teste').style.height = "100vh";
+    }    
+  </script>
   <script src='javascripts/jquery.js'></script>
   <script src='javascripts/bootstrap.js'></script>
 </body>

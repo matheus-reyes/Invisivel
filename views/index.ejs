@@ -10,7 +10,7 @@
   <link rel='stylesheet' type='text/css' media='screen' href='stylesheets/index.css'>
 </head>
 <body>
-  <div class="container-fluid" id='teste'>
+  <div class="container-fluid" id='container-fluid'>
     <div class="row">
       <!-- Barra de Navegação -->
       <nav class="navbar navbar-expand-sm py-5">
@@ -29,19 +29,36 @@
         </div>
       </nav>
     </div>
+
+    <div class="conteudo" >
+      <!-- Logo e botoes -->
+      <div class="logo" id='logo-botoes'>
+        &ltin&gtvisivel
+      </div>
+      <div class="botoes-itens" id='logo-botoes'>     
+        <div class="botao">
+          <input type="button" value="Entrar">
+        </div>
+        <div class="botao">
+          <input type="button" value="Criar uma conta">
+        </div>
+      </div>
+    
+    </div>
+
   </div>
 
   <!-- Teste do backgroud -->
   <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br> AAAAAAAAAAAAAA -->
 
   <script>
-    var alturaDiv = document.getElementById('teste').offsetHeight;
+    var alturaDiv = document.getElementById('container-fluid').offsetHeight;
     var alturaPagina = window.screen.height;
 
     if(alturaDiv > alturaPagina){
-      document.getElementById('teste').style.height = "100%";
+      document.getElementById('container-fluid').style.height = "100%";
     }else{
-      document.getElementById('teste').style.height = "100vh";
+      document.getElementById('container-fluid').style.height = "100vh";
     }    
   </script>
   <script src='javascripts/jquery.js'></script>

@@ -31,7 +31,7 @@ let Usuario = (sequelize, Datatypes) => {
         },
         {
             tableName: "usuario",
-            timestamps: true
+            timestamps: false
         }
     )
 

@@ -19,7 +19,7 @@ let Especialidade_Reporte = (sequelize, Datatypes) => {
         },
         {
             tableName: "especialidade_reporte",
-            timestamps: true
+            timestamps: false
         }
     )
 

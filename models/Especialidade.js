@@ -15,7 +15,7 @@ let Especialidade = (sequelize, Datatypes) => {
         },
         {
             tableName: "especialidade",
-            timestamps: true
+            timestamps: false
         }
     )
 

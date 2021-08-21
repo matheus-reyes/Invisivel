@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable('servico_reporte', {
+  up: async (queryInterface, Datatypes) => {
+    return queryInterface.createTable('especialidade_reporte', {
       id:{
         type: Datatypes.INTEGER,
         primaryKey: true,
@@ -18,10 +18,10 @@ module.exports = {
           onDelete:"CASCADE",
           onUpdate:"CASCADE"
       },
-      id_servico:{
+      id_especialidade:{
           type: Datatypes.INTEGER,
           references:{
-            model:'servico',
+            model:'especialidade',
             key:'id'
           },
           onDelete:"CASCADE",
@@ -30,7 +30,7 @@ module.exports = {
     });
   },
 
-  down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('servico_reporte');
+  down: async (queryInterface, Datatypes) => {
+    return queryInterface.dropTable('especilidade_reporte');
   }
 };

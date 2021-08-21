@@ -9,20 +9,144 @@
 </head>
 <body onload="initialize()">
     <nav class="navbar navbar-expand-sm">
-        <div class="navbar-collapse">
-          <ul class="navbar-nav"> 
-            <li class="nav-item">
-              <a class="nav-link fonte-principal" href="#" id="nav-sobre"> <b>Sobre</b> </a>
-            </li>
-            <li class="nav-item">
-              <span class="barra-lateral fonte-principal"> </span>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fonte-principal" href="#" id="nav-mural">  <b>Mural</b> </a>
-            </li>
-          </ul>
+      <div class="navbar-collapse">
+        <ul class="navbar-nav"> 
+          <li class="nav-item">
+            <a class="nav-link fonte-principal" href="#" id="nav-sobre"> <b>Sobre</b> </a>
+          </li>
+          <li class="nav-item">
+            <span class="barra-lateral fonte-principal"> </span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fonte-principal" href="#" id="nav-mural">  <b>Mural</b> </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-4 offset-2 mt-2">
+          <div class="busca">
+            <input type="text" id="campo_busca" placeholder="O que você procura?">
+            <button type="submit" onclick="" class="buscar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+            </button> 
+          </div> 
         </div>
-      </nav>
+  
+        <div class="col-2 offset-3 mt-2">
+          <div class="d-flex flex-row-reverse">
+            <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#modal-reporte"> Criar Reporte </button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
     <div id="map_canvas"></div>
+
+    <section>
+      <div class="modal fade" id="modal-reporte" tabindex="-1" role="dialog" aria-labelledby="modal-reporte-titulo" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="modal-reporte-titulo"> Criar Reporte </h5>
+                      <span type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </span>
+                  </div>
+  
+                  <div class="modal-body">        
+                      <div class="row justify-content-center">
+                          <div class="col-lg-10"> 
+                              <form id="form-report" action="/reporte" enctype="multipart/form-data" method="POST">
+                                  <div class="form-group row mb-3">
+                                    <div class="col-4">
+                                      <img id="imagem" src="images/avatar.png" alt="your image" />
+                                    </div> 
+                                    <div class="col-5 vertical-center my-auto">
+                                      <label class="col-12 col-form-label modalText"> Selecione uma imagem </label>
+                                      <input accept="image/*" type='file' id="imgInp" name="img" />
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="form-group row mt=5 mb-3">
+                                    <div class="col-12">
+                                      <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ReportOutraPessoa" id="ReportOutraPessoa" value="ReportOutraPessoa">
+                                        <label class="form-check-label" for="ReportOutraPessoa"> Estou reportando outra pessoa </label>
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ReportMesmaPessoa" id="ReportMesmaPessoa" value="ReportMesmaPessoa">
+                                        <label class="form-check-label" for="ReportMesmaPessoa"> Estou reportando a mim mesmo </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="form-group row" id="divNomeOutraPessoa">
+                                      <label class="col-12 col-form-label modalText">Digite o nome da pessoa </label>
+                                      <div class="col-12">
+                                          <input id="nomeOutraPessoa" type="text" class="form-control cursorText" name="nomeOutraPessoa">
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1"> Conte sua história </label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mensagem"></textarea>
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <label class="col-12 col-form-label modalText"> Quais serviços você precisa ? </label>
+                                    <div class="col-12">
+                                        <input id="servicos" type="text" class="form-control cursorText" name="servicos">
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <label class="col-12 col-form-label modalText"> Com o que você tem experiência ? </label>
+                                    <div class="col-12">
+                                        <input id="especialidades" type="text" class="form-control cursorText" name="especialidades">
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row">
+                                    <div class="col-4">
+                                      <label class="col-12 col-form-label modalText"> Digite seu estado </label>
+                                      <div class="col-12">
+                                          <input id="estado" type="text" class="form-control cursorText" name="estado">
+                                      </div>
+                                    </div>
+                                    <div class="col-4">
+                                      <label class="col-12 col-form-label modalText"> Digite sua cidade </label>
+                                      <div class="col-12">
+                                          <input id="cidade" type="text" class="form-control cursorText" name="cidade">
+                                      </div>
+                                    </div>
+                                    <div class="col-4">
+                                      <label class="col-12 col-form-label modalText"> Digite seu bairro </label>
+                                      <div class="col-12">
+                                          <input id="bairro" type="text" class="form-control cursorText" name="bairro">
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="modal-footer mt-3">
+                                      <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
+                                      <button type="submit" class="btn btn-success"> Criar </button>
+                                  </div>     
+                              </form>
+                          </div>
+                      </div>            
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
+
+    <script type="text/javascript" src='javascripts/previewImage.js'></script>
+    <script type="text/javascript" src='javascripts/jquery.js'></script>
+    <script type="text/javascript" src='javascripts/bootstrap.js'></script>
 </body>
 </html>

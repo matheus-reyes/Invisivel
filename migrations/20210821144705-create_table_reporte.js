@@ -18,11 +18,11 @@ module.exports = {
           allowNull: false
       },
       lat:{
-          type: Datatypes.INTEGER,
+          type: Datatypes.STRING(150),
           allowNull: false
       },
       lng:{
-          type: Datatypes.INTEGER,
+          type: Datatypes.STRING(150),
           allowNull: false
       },
       denuncias:{
@@ -33,13 +33,9 @@ module.exports = {
           type: Datatypes.INTEGER,
           allowNull: false
       },
-      permiteLinkedIn:{
-          type: Datatypes.BOOLEAN,
-          allowNull: false
-      },
-      permiteFacebook:{
-          type: Datatypes.BOOLEAN,
-          allowNull: false
+      img:{
+        type: Datatypes.STRING(150), 
+        allowNull: true
       },
       id_usuario:{
           type: Datatypes.INTEGER,

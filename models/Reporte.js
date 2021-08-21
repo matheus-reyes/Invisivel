@@ -39,6 +39,10 @@ let Reporte = (sequelize, Datatypes) => {
             permiteFacebook:{
                 type: Datatypes.BOOLEAN,
                 allowNull: false
+            },
+            id_usuario:{
+                type: Datatypes.INTEGER,
+                allowNull: false
             }
         },
         {

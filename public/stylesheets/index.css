@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@100&display=swap');
 
 body{
-background: linear-gradient(100deg, rgba(18,13,30,1) 0%, rgb(16, 24, 32) 50%);
+  background: linear-gradient(100deg, rgba(18,13,30,1) 0%, rgb(16, 24, 32) 50%);
 }
 .conteudo{
   margin-top: 18vh;
@@ -45,9 +45,9 @@ background: linear-gradient(100deg, rgba(18,13,30,1) 0%, rgb(16, 24, 32) 50%);
 }
 
 #logo-botoes{
-  display: inline-block;
-  
+  display: inline-block;  
 }
+
 .fonte-principal{
   font-family: 'Montserrat', sans-serif;
   font-size: 1.5rem;

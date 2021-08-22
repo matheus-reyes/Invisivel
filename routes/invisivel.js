@@ -12,4 +12,6 @@ router.post("/reporte", upload.single("img"), autorizacao, controller.criarRepor
 
 router.get("/reportes", controller.consultarReportes);
 
+router.get("/seuspedidos", controller.seuspedidos);
+
 module.exports = router;

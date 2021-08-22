@@ -10,17 +10,36 @@ body{
   display: flex;
   justify-content: center;
 }
-.logo{
-  font-family: 'Montserrat', sans-serif;
-  color:white;
-  font-size: 8vw;
-  margin-right: 5%;
-  margin-left: 5%;
-}
+
 .botoes-itens{
   margin-right: 5%;
   margin-left: 5%;
 }
+
+
+.sub-window-header{
+  background-color:#5D8CBA !important;
+}
+.popup-bar{
+  background-color:#5D8CBA !important;
+}
+
+.navbar {
+  -webkit-box-shadow: 0 8px 6px -6px #5D8CBA !important;
+  -moz-box-shadow: 0 8px 6px -6px #5D8CBA !important;
+  box-shadow: 0 8px 6px -6px #5D8CBA !important;
+  
+}
+
+
+
+
+
+
+
+
+
+
 
 .botao input{
   font-size:1.7vw;
@@ -37,9 +56,7 @@ body{
   transition: border-color 0.5s;
 }
 
-.nav-item a:focus{
-  color: #5D8CBA;
-}
+
 .botao input:hover{
   border-color:#ffffff;
   border-width:2px;
@@ -61,25 +78,6 @@ body{
   color:white;
 }
 
-.nav-link{
-  margin-left: 30px;
-  margin-right: 30px;
-  color:white;
-}
-
-.nav-link:hover{
-  color: #5D8CBA;
-  transition: color 0.3s;
-}
-
-.barra-lateral{
-  border-right: 0.1px solid white;
-  font-size: 2rem;
-}
-
-.navbar-nav{
-  margin-left: 50px;
-}
 
 #imagem-identidade{
   width:75px;

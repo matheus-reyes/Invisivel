@@ -225,7 +225,7 @@ nav{
   width:400px;
   max-height: 400px;
   position:fixed;
-  right:280px;
+  right:320px;
   bottom:0;	
 }
 .sub-window-header{
@@ -285,6 +285,6 @@ nav{
 }
 .chat-box-new{
   position:fixed; 
-  right:20px; 
+  right:60px; 
   bottom:0;  
 }

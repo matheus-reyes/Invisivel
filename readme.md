@@ -15,5 +15,5 @@ Para rodar localmente o projeto, rode o comando `npm start`, depois acesse o end
 As migrations servem para criar as tabelas no banco de dados automaticamente.
 Certifique-se de ter criado um arquivo .env com as configurações do seu Mysql preenchidas.
 Além disso, certifique-se de ter criado um schema chamado invisivel no seu Mysql.
-Após isso, rode o comando `npx sequelize db:migrate` para criar todas as tabelas automaticamente no seu banco.
+Após isso, rode o comando `` para criar todas as tabelas automaticamente no seu banco.
 Para remover as tabelas, uma por uma, rode o comando `npx sequelize db:migrate:undo`.

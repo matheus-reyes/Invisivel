@@ -73,7 +73,14 @@ body{
   margin-left: 50px;
 }
 
+#imagem-identidade{
+  width:75px;
+}
 
+#imagem{
+  width:150px;
+  border-radius: 50%;
+}
 
 /* Media Querys Para Responsividade */
 

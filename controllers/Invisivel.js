@@ -4,14 +4,30 @@ const {Reporte, Especialidade, Servico} = require('../models');
 module.exports = {
 
     inicio: (req, res) => {
-        res.render("mapa/inicio");
+        res.render("inicio");
+    },
+
+    mapa: async (req, res) => {
+        const reportes = await Reporte.findAll({
+            include:[
+                {
+                    model: Especialidade,
+                    as: 'especialidade'
+                },
+                {
+                    model: Servico,
+                    as: 'servico'
+                }
+            ]
+        });
+        res.render("mapa", {usuario:req.session.usuario, reportes});
     },
 
     criarReporte: async (req, res) => {
         const img = req.file.filename;
-        const ReportMesmaPessoa = req.body.ReportMesmaPessoa;
+        const ReportOutraPessoa = req.body.ReportOutraPessoa;
         let nomeResponsavel = "";
-        if(ReportMesmaPessoa == undefined){
+        if(ReportOutraPessoa == "ReportOutraPessoa"){
             nomeResponsavel = req.body.nomeOutraPessoa;
         }else{
             nomeResponsavel = req.session.usuario.nome;
@@ -54,20 +70,7 @@ module.exports = {
                 id_reporte: reporteCriado.id
             });
     
-            const reportes = await Reporte.findAll({
-                include:[
-                    {
-                        model: Especialidade,
-                        as: 'especialidade'
-                    },
-                    {
-                        model: Servico,
-                        as: 'servico'
-                    }
-                ]
-            });
-    
-            res.render("inicio", {usuario:req.session.usuario, reportes});
+            res.render("inicio", {usuario:req.session.usuario});
 
         })();
     },

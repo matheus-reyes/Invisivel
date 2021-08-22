@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title><in>visivel</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='stylesheets/bootstrap.css'>
+  <link rel='stylesheet' type='text/css' media='screen' href='stylesheets/index.css'>
+</head>
+<body>
+  <div class="container-fluid" id='container-fluid'>
+    <div class="row">
+        <!-- Barra de Navegação -->
+        <div class="row mt-4">
+            <div class="offset-1 col-4">
+                <a class="nav-link fonte-principal" href="#" id="nav-mural">  <b>&ltin&gtvisivel </b> </a>
+            </div>
+            <nav class="col-4 d-flex flex-row-reverse navbar navbar-expand-lg">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fonte-principal" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Modos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/inicio">Modo pedir ajuda</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/mapa">Modo fornecer ajuda</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="col-3 d-flex flex-row-reverse">
+                <img id="imagem-identidade" src="images/perm_identity.png"/>
+            </div>
+      </div>
+    </div>
+
+    <div class="conteudo" >
+      <!-- Logo e botoes -->
+      <div class="logo" id='logo-botoes'>
+        <img src="images/pin_drop.png"/>
+      </div>
+      <div class="botoes-itens" id='logo-botoes'>     
+        <div class="botao">
+          <input type="button" value="Pedir ajuda" data-toggle="modal" data-target="#modal-reporte">
+        </div>
+        <div class="botao">
+          <input type="button" value="Visualizar pedidos" data-toggle="modal" data-target="#modal-cadastro">
+        </div>
+      </div>
+    </div>
+
+    <section>
+        <div class="modal fade" id="modal-reporte" tabindex="-1" role="dialog" aria-labelledby="modal-reporte-titulo" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-reporte-titulo"> Criar Reporte </h5>
+                        <span type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </span>
+                    </div>
+    
+                    <div class="modal-body">        
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10"> 
+                                <form id="form-report" action="/reporte" enctype="multipart/form-data" method="POST">
+                                    <div class="form-group row mb-3">
+                                      <div class="col-4">
+                                        <img id="imagem" src="images/avatar.png"/>
+                                      </div> 
+                                      <div class="col-5 vertical-center my-auto">
+                                        <label class="col-12 col-form-label modalText"> Selecione uma imagem </label>
+                                        <input accept="image/*" type='file' id="imgInp" name="img" required/>
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="form-group row mt=5 mb-3">
+                                      <div class="col-12">
+                                        <div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="radio" name="ReportOutraPessoa" id="ReportOutraPessoa" value="ReportOutraPessoa">
+                                          <label class="form-check-label" for="ReportOutraPessoa"> Estou reportando outra pessoa </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="radio" name="ReportOutraPessoa" id="ReportMesmaPessoa" value="ReportMesmaPessoa" checked>
+                                          <label class="form-check-label" for="ReportMesmaPessoa"> Estou reportando a mim mesmo </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="form-group row mb-3" id="divNomeOutraPessoa">
+                                        <label class="col-12 col-form-label modalText"> Digite o nome da pessoa </label>
+                                        <div class="col-12">
+                                            <input id="nomeOutraPessoa" type="text" class="form-control cursorText" name="nomeOutraPessoa" placeholder="João Filho">
+                                        </div>
+                                    </div>
+  
+                                    <div class="form-group mb-3">
+                                      <label for="exampleFormControlTextarea1"> Conte sua história </label>
+                                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mensagem" placeholder="Realizo vendas de forma física e preciso de muita ajuda para aumentar minhas vendas." required></textarea>
+                                    </div>
+  
+                                    <div class="form-group row mt=5 mb-3">
+                                      <div class="col-12">
+                                        <div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="checkbox" id="checkboxServicos" value="servicos">
+                                          <label class="form-check-label" for="checkboxServicos"> Preciso de ajuda com serviços </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="checkbox" id="checkboxEmprego" value="emprego">
+                                          <label class="form-check-label" for="checkboxEmprego"> Preciso de ajuda com emprego </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="form-group row mb-3" id="divServicos">
+                                      <label class="col-12 col-form-label modalText"> Quais serviços você precisa ? </label>
+                                      <div class="col-12">
+                                          <input id="servicos" type="text" class="form-control cursorText" name="servicos" placeholder="Preciso de um site, ou um aplicativo">
+                                      </div>
+                                    </div>
+  
+                                    <div class="form-group row mb-3" id="divTrabalho">
+                                      <label class="col-12 col-form-label modalText"> Com o que você tem experiência ? </label>
+                                      <div class="col-12">
+                                          <input id="especialidades" type="text" class="form-control cursorText" name="especialidades" placeholder="Trabalhei como administrador, pedreiro, vendedor">
+                                      </div>
+                                    </div>
+  
+                                    <div class="form-group row">
+                                      <div class="col-4">
+                                        <label class="col-12 col-form-label modalText"> Digite seu estado </label>
+                                        <div class="col-12">
+                                            <input id="estado" type="text" class="form-control cursorText" name="estado" placeholder="Sao Paulo" required>
+                                        </div>
+                                      </div>
+                                      <div class="col-4">
+                                        <label class="col-12 col-form-label modalText"> Digite sua cidade </label>
+                                        <div class="col-12">
+                                            <input id="cidade" type="text" class="form-control cursorText" name="cidade" placeholder="Braganca Paulista" required>
+                                        </div>
+                                      </div>
+                                      <div class="col-4">
+                                        <label class="col-12 col-form-label modalText"> Digite seu bairro </label>
+                                        <div class="col-12">
+                                            <input id="bairro" type="text" class="form-control cursorText" name="bairro" placeholder="Itaquera" required>
+                                        </div>
+                                      </div>
+                                    </div>
+  
+                                    <div class="modal-footer mt-3">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
+                                        <button type="submit" class="btn btn-success"> Criar </button>
+                                    </div>     
+                                </form>
+                            </div>
+                        </div>            
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+    <script type="text/javascript" src='javascripts/previewImage.js'></script>
+    <script type="text/javascript" src='javascripts/jquery.js'></script>
+    <script type="text/javascript" src='javascripts/bootstrap.js'></script>
+</body>
+</html>

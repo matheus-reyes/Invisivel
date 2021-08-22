@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel='stylesheet' type='text/css' media='screen' href='stylesheets/bootstrap.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='stylesheets/index.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='stylesheets/maps.css'>
+    <script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key='></script>
+    <script type="text/javascript" src='javascripts/maps.js'></script>
+</head>
+<body onload="initialize()">
+  <div class="container-fluid">
+      <!-- Barra de Navegação -->
+      <div class="row mt-4">
+        <div class="offset-1 col-4">
+            <a class="nav-link fonte-principal" href="#" id="nav-mural">  <b>&ltin&gtvisivel </b> </a>
+        </div>
+        <nav class="col-4 d-flex flex-row-reverse navbar navbar-expand-lg">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fonte-principal" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Modos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/inicio">Modo pedir ajuda</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/mapa">Modo fornecer ajuda</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="col-3 d-flex flex-row-reverse">
+            <img id="imagem-identidade" src="images/perm_identity.png"/>
+        </div>
+      </div>
+    </div>
+      
+    <div id="map_canvas"></div>
+
+    <% for(reportes of reportes) { %>
+      <section>
+        <div class="modal fade" id="modal-reporte<%=reportes.id%>" tabindex="-1" role="dialog" aria-labelledby="modal-reporte-titulo<%=reportes.id%>" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-reporte-titulo<%=reportes.id%>"> <%=reportes.nomeResponsavel%> </h5>
+                        <span type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </span>
+                    </div>
+    
+                    <div class="modal-body"> 
+                      <div class="row">
+                        <div class="offset-2 col-4">
+                          <img id="imagem-exibida" src="images/<%=reportes.img%>"/>
+                        </div>
+                        <div class="col-3 my-auto">
+                          <p class="titulo-principal"> <b> <%=reportes.nomeResponsavel%> </b> </p>
+                        </div>
+                        <div class="col-2 d-flex flex-row-reverse">
+                          <span id="click-denunciar">
+                            <svg id="denunciar" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                              <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+                              <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+                            </svg>
+                          </span>
+                          <span id="click-apoiar">
+                            <svg id="apoiar" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                              <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="offset-2 col-10 mt-4">
+                          <p class="titulo-principal"> <b> Mensagem </b>  </p>
+                          <p class="texto-comum"> <%=reportes.mensagem%> </p>
+                        </div>
+                      </div>
+                      <% if(reportes.servico != undefined) { %>
+                        <div class="row">
+                          <div class="offset-2 col-10">
+                            <p class="titulo-principal"> <b> Serviços Solicitados </b>  </p>
+                            <p class="texto-comum"> <%=reportes.servico.nome%> </p>
+                          </div>
+                        </div>
+                      <% } %>
+                      <% if(reportes.especialidade != undefined) { %>
+                        <div class="row">
+                          <div class="offset-2 col-10">
+                            <p class="titulo-principal"> <b> Experiência </b>  </p>
+                            <p class="texto-comum"> <%=reportes.especialidade.nome%> </p>
+                          </div>
+                        </div>
+                      <% } %>
+                    </div>         
+
+                    <div class="modal-footer mt-3">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
+                      <button type="submit" class="btn btn-success"> Enviar mensagem </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+      </section>
+    <% } %>
+
+    <script type="text/javascript" src='javascripts/previewImage.js'></script>
+    <script type="text/javascript" src='javascripts/jquery.js'></script>
+    <script type="text/javascript" src='javascripts/bootstrap.js'></script>
+</body>
+</html>

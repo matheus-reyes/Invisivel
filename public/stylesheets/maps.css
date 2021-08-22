@@ -25,7 +25,6 @@ nav{
   top:14%;
   height: 86%;
   width:100%;
-  z-index:-1;
 }
 
 .nav-link{
@@ -80,4 +79,12 @@ nav{
 
 #divNomeOutraPessoa{
   display:none;
+}
+
+.busca-item{
+  margin-left: 50px;
+}
+
+.botao-item{
+  margin-left: 50px;
 }

@@ -20,30 +20,22 @@
           <li class="nav-item">
             <a class="nav-link fonte-principal" href="#" id="nav-mural">  <b>Mural</b> </a>
           </li>
+          <li class="nav-item busca-item">
+            <div class="busca">
+              <input type="text" id="campo_busca" placeholder="O que você procura?">
+              <button type="submit" onclick="" class="buscar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+              </button> 
+            </div> 
+          </li>
+          <li class="nav-item botao-item">
+            <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#modal-reporte"> Criar Reporte </button>
+          </li>
         </ul>
       </div>
     </nav>
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-4 offset-2 mt-2">
-          <div class="busca">
-            <input type="text" id="campo_busca" placeholder="O que você procura?">
-            <button type="submit" onclick="" class="buscar">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-              </svg>
-            </button> 
-          </div> 
-        </div>
-  
-        <div class="col-2 offset-3 mt-2">
-          <div class="d-flex flex-row-reverse">
-            <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#modal-reporte"> Criar Reporte </button>
-          </div>
-        </div>
-      </div>
-    </div>
       
     <div id="map_canvas"></div>
 
@@ -64,7 +56,7 @@
                               <form id="form-report" action="/reporte" enctype="multipart/form-data" method="POST">
                                   <div class="form-group row mb-3">
                                     <div class="col-4">
-                                      <img id="imagem" src="images/avatar.png" alt="your image" />
+                                      <img id="imagem" src="images/avatar.png"/>
                                     </div> 
                                     <div class="col-5 vertical-center my-auto">
                                       <label class="col-12 col-form-label modalText"> Selecione uma imagem </label>
@@ -144,6 +136,45 @@
           </div>
       </div>
     </section>
+
+    <% for(reportes of reportes) { %>
+      <section>
+        <div class="modal fade" id="modal-reporte<%=reportes.id%>" tabindex="-1" role="dialog" aria-labelledby="modal-reporte-titulo<%=reportes.id%>" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-reporte-titulo<%=reportes.id%>"> Criar Reporte </h5>
+                        <span type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </span>
+                    </div>
+    
+                    <div class="modal-body">        
+                        <div class="row">
+                          <div class="col-4">
+                            <img id="imagem" src="images/<%=reportes.img%>"/>
+                          </div>
+                          <div class="offser-2 col-6 my-auto">
+                            <p> <%=reportes.nomeResponsavel%> </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="12 my-5">
+                            <p> <%=reportes.mensagem%> </p>
+                          </div>
+                        </div>
+                    </div>           
+
+                    <div class="modal-footer mt-3">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
+                      <button type="submit" class="btn btn-success"> Criar </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+      </section>
+    <% } %>
 
     <script type="text/javascript" src='javascripts/previewImage.js'></script>
     <script type="text/javascript" src='javascripts/jquery.js'></script>

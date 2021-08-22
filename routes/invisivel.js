@@ -8,4 +8,6 @@ router.get("/inicio", autorizacao, controller.inicio);
 
 router.post("/reporte", upload.single("img"), autorizacao, controller.criarReporte);
 
+router.get("/reportes", controller.consultarReportes);
+
 module.exports = router;

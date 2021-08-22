@@ -67,6 +67,10 @@ module.exports = {
             res.render("inicio", {usuario:req.session.usuario, reportes});
 
         })();
+    },
 
+    consultarReportes: async (req, res, next) => {
+        let reportes = await Reporte.findAll();
+        return res.json(reportes);
     }
 }

@@ -29,15 +29,17 @@ body{
   height:7vh;
   border-width:1px;
   color:#fff;
-  border-color:#18ab29;
+  border-color:#5D8CBA;
   border-radius: 30px;
-  text-shadow: 1px 1px 0px #2f6627;
-  background:#44c767;
+  text-shadow: 1px 1px 0px #5D8CBA;
+  background:#5D8CBA;
   margin: 5% 0px 5% 0px;
   transition: border-color 0.5s;
 }
 
-
+.nav-item a:focus{
+  color: #5D8CBA;
+}
 .botao input:hover{
   border-color:#ffffff;
   border-width:2px;
@@ -60,8 +62,8 @@ body{
 }
 
 .nav-link:hover{
-  color: #44c767;
-  transition: color 0.5s;
+  color: #5D8CBA;
+  transition: color 0.3s;
 }
 
 .barra-lateral{

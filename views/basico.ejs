@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel='stylesheet' type='text/css' media='screen' href='stylesheets/bootstrap.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='stylesheets/basico.css'>
+    <script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key='></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/f59bcd8580.js"></script>
+
+
+
+</head>
+<body>
+
+  <!-- MENU  -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand mr-auto mr-lg-0" href="#" id="logo">[in]visivel</a>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        
+
+      </ul>
+      <ul class="nav navbar-nav ml-md--auto" >
+        <li class="nav-item active" >
+          <a class="nav-link" href="#" id="menu-botoes" >Mapa </a>
+        </li>
+        <li class="nav-item">
+          <span class="barra-lateral fonte-principal"> </span>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#" id="menu-botoes">Mural </a>
+        </li>
+        <li class="nav-item">
+          <span class="barra-lateral fonte-principal"> </span>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#" id="menu-botoes"> <div id="apoie"> Apoie o projeto </div></a>
+        </li>
+        <li class="nav-item">
+          <span class="barra-lateral fonte-principal"> </span>
+        </li>
+        <li class="dropdown" id="menu-botoes">
+    
+          <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false"> 
+            <img src="/images/bonequinho.png" id="nav-bonequinho">
+            <b class="caret"></b>
+                                </a>
+    
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <!-- ADDED CLASS -->
+            <a class="dropdown-item" id="perfil" href="#">Perfil</a>
+            <a class="dropdown-item" id="perfil"href="#">Configurações</a>  
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" id="perfil" href="#">Sair</a>
+          </div>
+    
+        </li>
+      </ul>
+  </nav>
+
+
+
+  <!-- TEXTE  -->
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade" id="my-content" role="tabpanel" aria-labelledby="contact-tab">my content</div>
+</div>
+<div class="window-main">
+    <div class="sub-window-header d-flex justify-content-between">
+        <div>
+            <div class="font-weight-bold">Alexandre Kenji</div>
+            <div class="online-circle-two"></div>
+            <div class="active-now2">Online</div>
+        </div>
+        <div class="close-window-icon">
+            <i class="fa fa-close"></i>
+        </div>
+    </div>
+    <div class="sub-window-body">
+        <div class="d-flex message-bar-new">
+            <div class="message-circle">
+                <img src="/images/ale.png" />
+            </div>
+            <div class="window-message-text">
+                <span><span class="font-weight-bold">Alexandre Kenji</span> . <span class="text-black-50">12:20 AM</span></span> <br />
+                <p>Vai ter sorteiooo</p>
+            </div>
+        </div>
+        <div class="d-flex message-bar-new">
+            <div class="message-circle">
+                <img src="/images/otavio.png" />
+            </div>
+            <div class="window-message-text">
+                <span><span class="font-weight-bold">Otávio Rosa</span> . <span class="text-black-50">12:25 AM</span></span> <br />
+                <p>Opaa, q horas?</p>
+            </div>
+        </div>
+        <div class="d-flex message-bar-new">
+            <div class="message-circle">
+                <img src="/images/ale.png" />
+            </div>
+            <div class="window-message-text">
+                <span><span class="font-weight-bold">Alexandre Kenji</span> . <span class="text-black-50">12:26 AM</span></span> <br />
+                <p>Estão sorteando agora, entra no discord tbm</p>
+            </div>
+        </div>
+        <div class="d-flex message-bar-new">
+            <div class="message-circle">
+                <img src="/images/otavio.png" />
+            </div>
+            <div class="window-message-text">
+                <span><span class="font-weight-bold">Otávio Rosa</span> . <span class="text-black-50">12:29 AM</span></span> <br />
+                <p>ta</p>
+            </div>
+        </div>
+    </div>
+    <div class="sub-window-textarea">
+        <form>
+            <textarea name="" cols="" rows="" placeholder="Escreva uma mensagem..."></textarea>
+        </form>
+    </div>
+    <div class="message-option">
+        <div class="d-flex align-items-center justify-content-between bar-bottom-message">
+            <div class="d-flex">
+                <div><img src="/images/attach.png" /></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div><button class="btn btn-info btn-sm">Enviar</button></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+  <!-- CHATE COM FOTINHAS  -->
+  <div class="chat-box-new">
+    <div class="popup-bar d-flex align-items-center">
+        <div class="profile-circle">
+            <img src="/images/otavio.png"/>
+            
+        </div>
+        <div class="text-white ml-2 bar-text">
+            Mensagens
+        </div>
+    </div>
+    <div class="window-content-wrapper">
+        <div class="message-search">
+            <input name="" type="text" placeholder="Buscar conversa..." />
+            <img src="img/search.png" class="input_img" />
+        </div>
+        <div class="window-content">
+            <div class="d-flex justify-content-between align-items-center message-bar-wrapper cc1">
+                <div class="d-flex">
+                    <div class="message-circle">
+                        <img src="/images/ale.png" />
+                        <div class="online-circle"></div>
+                    </div>
+                    <div class="name-wrapper">
+                        <div class="message-name">Alexandre Kenji</div>
+                        <div class="designation2">Designer</div> 
+                    </div>
+                </div>
+                
+            </div>
+            <div class="d-flex justify-content-between align-items-center message-bar-wrapper">
+                <div class="d-flex">
+                    <div class="message-circle">
+                        <img src="/images/raul.png" />
+                    </div>
+                    <div class="name-wrapper">
+                        <div class="message-name">Raul Sperandio</div>
+                        <div class="designation2">Designer</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="d-flex justify-content-between align-items-center message-bar-wrapper">
+                <div class="d-flex">
+                    <div class="message-circle">
+                        <img src="/images/reyes.png" />
+                        <div class="online-circle"></div>
+                    </div>
+                    <div class="name-wrapper">
+                        <div class="message-name">Matheus Reyes</div>
+                        <div class="designation2">Programador</div>
+                    </div>
+                </div>
+                <div class="new-message-noti">
+                  2
+              </div>
+            </div>            
+        </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+<script>
+  $(document).ready(function(){
+    $(".popup-bar").click(function(){
+      $(".window-content-wrapper").toggle();
+    });
+     $(".window-content>.cc1").click(function(){
+      $(".window-main").toggle();
+    });
+     $(".close-window-icon").click(function(){
+      $(".window-main").hide();
+    });
+  });
+</script>
+</body>
+</html>

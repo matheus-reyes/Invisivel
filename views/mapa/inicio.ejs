@@ -60,7 +60,7 @@
                                     </div> 
                                     <div class="col-5 vertical-center my-auto">
                                       <label class="col-12 col-form-label modalText"> Selecione uma imagem </label>
-                                      <input accept="image/*" type='file' id="imgInp" name="img" />
+                                      <input accept="image/*" type='file' id="imgInp" name="img" required/>
                                     </div>
                                   </div>
                                   
@@ -77,29 +77,42 @@
                                     </div>
                                   </div>
                                   
-                                  <div class="form-group row" id="divNomeOutraPessoa">
-                                      <label class="col-12 col-form-label modalText">Digite o nome da pessoa </label>
+                                  <div class="form-group row mb-3" id="divNomeOutraPessoa">
+                                      <label class="col-12 col-form-label modalText"> Digite o nome da pessoa </label>
                                       <div class="col-12">
-                                          <input id="nomeOutraPessoa" type="text" class="form-control cursorText" name="nomeOutraPessoa">
+                                          <input id="nomeOutraPessoa" type="text" class="form-control cursorText" name="nomeOutraPessoa" placeholder="João Filho">
                                       </div>
                                   </div>
 
-                                  <div class="form-group">
+                                  <div class="form-group mb-3">
                                     <label for="exampleFormControlTextarea1"> Conte sua história </label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mensagem"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mensagem" placeholder="Realizo vendas de forma física e preciso de muita ajuda para aumentar minhas vendas." required></textarea>
                                   </div>
 
-                                  <div class="form-group row">
+                                  <div class="form-group row mt=5 mb-3">
+                                    <div class="col-12">
+                                      <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="checkboxServicos" value="servicos">
+                                        <label class="form-check-label" for="checkboxServicos"> Preciso de ajuda com serviços </label>
+                                      </div>
+                                      <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="checkboxEmprego" value="emprego">
+                                        <label class="form-check-label" for="checkboxEmprego"> Preciso de ajuda com emprego </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="form-group row mb-3" id="divServicos">
                                     <label class="col-12 col-form-label modalText"> Quais serviços você precisa ? </label>
                                     <div class="col-12">
-                                        <input id="servicos" type="text" class="form-control cursorText" name="servicos">
+                                        <input id="servicos" type="text" class="form-control cursorText" name="servicos" placeholder="Preciso de um site, ou um aplicativo">
                                     </div>
                                   </div>
 
-                                  <div class="form-group row">
+                                  <div class="form-group row mb-3" id="divTrabalho">
                                     <label class="col-12 col-form-label modalText"> Com o que você tem experiência ? </label>
                                     <div class="col-12">
-                                        <input id="especialidades" type="text" class="form-control cursorText" name="especialidades">
+                                        <input id="especialidades" type="text" class="form-control cursorText" name="especialidades" placeholder="Trabalhei como administrador, pedreiro, vendedor">
                                     </div>
                                   </div>
 
@@ -107,19 +120,19 @@
                                     <div class="col-4">
                                       <label class="col-12 col-form-label modalText"> Digite seu estado </label>
                                       <div class="col-12">
-                                          <input id="estado" type="text" class="form-control cursorText" name="estado">
+                                          <input id="estado" type="text" class="form-control cursorText" name="estado" placeholder="Sao Paulo" required>
                                       </div>
                                     </div>
                                     <div class="col-4">
                                       <label class="col-12 col-form-label modalText"> Digite sua cidade </label>
                                       <div class="col-12">
-                                          <input id="cidade" type="text" class="form-control cursorText" name="cidade">
+                                          <input id="cidade" type="text" class="form-control cursorText" name="cidade" placeholder="Braganca Paulista" required>
                                       </div>
                                     </div>
                                     <div class="col-4">
                                       <label class="col-12 col-form-label modalText"> Digite seu bairro </label>
                                       <div class="col-12">
-                                          <input id="bairro" type="text" class="form-control cursorText" name="bairro">
+                                          <input id="bairro" type="text" class="form-control cursorText" name="bairro" placeholder="Itaquera" required>
                                       </div>
                                     </div>
                                   </div>
@@ -143,31 +156,61 @@
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modal-reporte-titulo<%=reportes.id%>"> Criar Reporte </h5>
+                        <h5 class="modal-title" id="modal-reporte-titulo<%=reportes.id%>"> <%=reportes.nomeResponsavel%> </h5>
                         <span type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </span>
                     </div>
     
-                    <div class="modal-body">        
+                    <div class="modal-body"> 
+                      <div class="row">
+                        <div class="offset-2 col-4">
+                          <img id="imagem-exibida" src="images/<%=reportes.img%>"/>
+                        </div>
+                        <div class="col-3 my-auto">
+                          <p class="titulo-principal"> <b> <%=reportes.nomeResponsavel%> </b> </p>
+                        </div>
+                        <div class="col-2 d-flex flex-row-reverse">
+                          <span id="click-denunciar">
+                            <svg id="denunciar" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                              <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+                              <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+                            </svg>
+                          </span>
+                          <span id="click-apoiar">
+                            <svg id="apoiar" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                              <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="offset-2 col-10 mt-4">
+                          <p class="titulo-principal"> <b> Mensagem </b>  </p>
+                          <p class="texto-comum"> <%=reportes.mensagem%> </p>
+                        </div>
+                      </div>
+                      <% if(reportes.servico != undefined) { %>
                         <div class="row">
-                          <div class="col-4">
-                            <img id="imagem" src="images/<%=reportes.img%>"/>
-                          </div>
-                          <div class="offser-2 col-6 my-auto">
-                            <p> <%=reportes.nomeResponsavel%> </p>
+                          <div class="offset-2 col-10">
+                            <p class="titulo-principal"> <b> Serviços Solicitados </b>  </p>
+                            <p class="texto-comum"> <%=reportes.servico.nome%> </p>
                           </div>
                         </div>
+                      <% } %>
+                      <% if(reportes.especialidade != undefined) { %>
                         <div class="row">
-                          <div class="12 my-5">
-                            <p> <%=reportes.mensagem%> </p>
+                          <div class="offset-2 col-10">
+                            <p class="titulo-principal"> <b> Experiência </b>  </p>
+                            <p class="texto-comum"> <%=reportes.especialidade.nome%> </p>
                           </div>
                         </div>
-                    </div>           
+                      <% } %>
+                    </div>         
 
                     <div class="modal-footer mt-3">
                       <button type="button" class="btn btn-danger" data-dismiss="modal"> Fechar </button>
-                      <button type="submit" class="btn btn-success"> Criar </button>
+                      <button type="submit" class="btn btn-success"> Enviar mensagem </button>
                     </div>
 
                 </div>

@@ -13,6 +13,10 @@ module.exports = {
           type: Datatypes.STRING(150), 
           allowNull: false
       },
+      tipo:{
+        type: Datatypes.STRING(150), 
+          allowNull: false
+      },
       email:{
           type: Datatypes.STRING(150), 
           allowNull: false

@@ -1,10 +1,10 @@
 const axios = require('axios');
-const {Reporte, Especialidade, Servico, Especialidade_Reporte, Servico_Reporte} = require('../models');
+const {Reporte, Especialidade, Servico} = require('../models');
 
 module.exports = {
 
     inicio: (req, res) => {
-        res.render("inicio");
+        res.render("mapa/inicio");
     },
 
     criarReporte: async (req, res) => {
@@ -44,25 +44,28 @@ module.exports = {
                 id_usuario: req.session.usuario.id
             });
     
-            const especialidadeCriada = await Especialidade.create({
-                nome: especialidades
+            await Especialidade.create({
+                nome: especialidades,
+                id_reporte: reporteCriado.id
             });
     
-            const servicoCriado = await Servico.create({
-                nome: servicos
+            await Servico.create({
+                nome: servicos,
+                id_reporte: reporteCriado.id
             });
     
-            await Especialidade_Reporte.create({
-                id_reporte: reporteCriado.id,
-                id_especialidade: especialidadeCriada.id
+            const reportes = await Reporte.findAll({
+                include:[
+                    {
+                        model: Especialidade,
+                        as: 'especialidade'
+                    },
+                    {
+                        model: Servico,
+                        as: 'servico'
+                    }
+                ]
             });
-    
-            await Servico_Reporte.create({
-                id_reporte: reporteCriado.id,
-                id_servico: servicoCriado.id
-            });
-    
-            let reportes = await Reporte.findAll();
     
             res.render("inicio", {usuario:req.session.usuario, reportes});
 

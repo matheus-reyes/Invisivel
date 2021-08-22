@@ -1,4 +1,4 @@
-const {Usuario, Reporte} = require('../models');
+const {Usuario, Reporte, Especialidade, Servico} = require('../models');
 const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -8,6 +8,7 @@ module.exports = {
         const email = req.body.email;
         const senha = req.body.senha;
         const usuariosAjudados = 0;
+        const tipo = req.body.inlineRadioOptions;
         
         let senhaCriptografada = bcrypt.hashSync(senha, 10);
 
@@ -15,7 +16,8 @@ module.exports = {
             nome,
             email,
             senha: senhaCriptografada,
-            usuariosAjudados
+            usuariosAjudados,
+            tipo
         });
             
         res.redirect("/");
@@ -33,9 +35,24 @@ module.exports = {
                 
                 req.session.usuario = usuarios[i];
 
-                const reportes = await Reporte.findAll();
+                const reportes = await Reporte.findAll({
+                    include:[
+                        {
+                            model: Especialidade,
+                            as: 'especialidade'
+                        },
+                        {
+                            model: Servico,
+                            as: 'servico'
+                        }
+                    ]
+                });
 
-                res.render("inicio", {usuario:req.session.usuario, reportes});
+                if(usuarios[i].tipo == "precisoDeAjuda"){
+                    res.render("inicio", {usuario:req.session.usuario, reportes});
+                }else if(usuarios[i].tipo == "QueroAjudar"){
+                    res.render("mapa/inicio", {usuario:req.session.usuario, reportes})
+                }
             }
         }
 

@@ -11,6 +11,10 @@ let Especialidade = (sequelize, Datatypes) => {
             nome:{
                 type: Datatypes.STRING(150), 
                 allowNull: false
+            },
+            id_reporte:{
+                type: Datatypes.INTEGER,
+                allowNull: false
             }
         },
         {
@@ -21,12 +25,11 @@ let Especialidade = (sequelize, Datatypes) => {
 
     especialidade.associate = (models) => {
 
-        especialidade.belongsToMany(
+        especialidade.belongsTo(
             models.Reporte,
             {
-                foreignKey: 'id_especialidade',
-                as: 'especialidade',
-                through: models.Especialidade_Reporte
+                foreignKey: 'id_reporte',
+                as: 'reporte'
             }
         );
 

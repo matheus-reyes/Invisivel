@@ -57,12 +57,19 @@ let Reporte = (sequelize, Datatypes) => {
             }
         );
 
-        reporte.belongsToMany(
+        reporte.hasOne(
             models.Especialidade,
             {
                 foreignKey: 'id_reporte',
-                as: 'reporte',
-                through: models.Especialidade_Reporte
+                as: 'especialidade'
+            }
+        );
+
+        reporte.hasOne(
+            models.Servico,
+            {
+                foreignKey: 'id_reporte',
+                as: 'servico'
             }
         );
 

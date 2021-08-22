@@ -10,8 +10,8 @@ router.get('/inicio', function(req, res, next) {
   res.render('inicio');
 });
 
-router.get('/menu', function(req, res, next) {
-  res.render('menu');
+router.get('/basico', function(req, res, next) {
+  res.render('basico');
 });
 
 

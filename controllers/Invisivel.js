@@ -78,5 +78,24 @@ module.exports = {
     consultarReportes: async (req, res, next) => {
         let reportes = await Reporte.findAll();
         return res.json(reportes);
+    },
+
+    seuspedidos: async (req, res, next) =>{
+        const reportes = await Reporte.findAll({
+            include:[
+                {
+                    model: Especialidade,
+                    as: 'especialidade'
+                },
+                {
+                    model: Servico,
+                    as: 'servico'
+                }
+            ],
+            where:{
+                id_usuario: req.session.usuario.id
+            }
+        });
+        res.render("seuspedidos", {usuario:req.session.usuario, reportes});
     }
 }
